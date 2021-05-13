@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { PokeSearcher } from '../components/pokemon/PokeSearch'
+import { PokeList } from '../components/pokemon/PokeList'
 import { getAllPokemon } from '../services/PokeApi'
 
 export const PokeContainer = () => {
@@ -12,7 +14,7 @@ export const PokeContainer = () => {
         
         const interval = setTimeout(() => {
             setLoading(false)
-        }, 1500);
+        }, 1000);
 
     }, [])
 
@@ -25,8 +27,9 @@ export const PokeContainer = () => {
             {loading && <div>L O A D I N G</div>}
             {!loading &&
                 <div>
-                    <input type="text" name="search" value={search} onChange={changeSearch}/>
-                    {data && data.filter(obj => obj.name.includes(search)).map((p,i) => <p key={i}>{p.name}</p>)}
+                    <PokeSearcher value={search} onChange={changeSearch}/>
+
+                    {data && <PokeList searchStr={search} pokeArr={data} />}
                 </div>
             }
         </div>
