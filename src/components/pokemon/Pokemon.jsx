@@ -1,9 +1,20 @@
 import React from 'react'
+import PropTypes from 'prop-types';
+
 
 export const Pokemon = ( {pokemon} ) => {
     return (
-        <div>
+        <p>
             {pokemon.name} - <a href={pokemon.url}>details - json</a>
-        </div>
+        </p>
     )
 }
+
+Pokemon.propTypes = {
+    pokeArr: PropTypes.shape(
+      {
+        name: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+      }
+    ).isRequired,
+};

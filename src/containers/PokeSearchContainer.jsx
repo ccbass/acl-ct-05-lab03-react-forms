@@ -14,7 +14,7 @@ export const PokeContainer = () => {
         
         const interval = setTimeout(() => {
             setLoading(false)
-        }, 1000);
+        }, 100);
 
     }, [])
 
